@@ -28,7 +28,8 @@ Click on the box and it will get copied
 Switch on to the Editor tab and make a prometheus0_eu1.yml file and paste the above code in it.
 
 First, for the EU Prometheus server that scrapes itself:
-``` global:
+```
+global:
   scrape_interval: 15s
   evaluation_interval: 15s
   external_labels:
@@ -39,3 +40,19 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['172.17.0.1:9090']
+
+For the second cluster we set two replicas:
+
+Make a prometheus0_us1.yml file and paste the above code in it.
+```
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: us1
+    replica: 0
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['172.17.0.1:9091','172.17.0.1:9092']
