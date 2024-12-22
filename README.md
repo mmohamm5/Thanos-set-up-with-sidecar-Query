@@ -1,0 +1,1 @@
+# Thanos-set-up-with-sidecar-Query
